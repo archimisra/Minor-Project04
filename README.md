@@ -1,4 +1,4 @@
-# Custom Reusable Functional Studio (Workspace Suite)
+# Custom Reusable Functional Studio (Archi's Workspace Suite)
 
 An elegant web interface consolidating two distinct day-to-day productivity hubs: a Task Ledger and an isolated Thought Registry Notebook module.
 
