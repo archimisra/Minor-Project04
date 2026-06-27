@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --canvas-bg: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%);
+  --surface-panel: rgba(255, 255, 255, 0.85);
+  --border-subtle: rgba(244, 143, 177, 0.3);
+  --accent-primary: #ec407a;
+  --accent-hover: #d81b60;
+  --text-main: #2c3e50;
+  --text-muted: #7f8c8d;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-smooth: 0 8px 32px 0 rgba(236, 64, 122, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--canvas-bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.workspace-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Navbar Interface Navigation Layout */
+.app-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-panel);
+  backdrop-filter: blur(8px);
+  padding: 20px 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-smooth);
+  margin-bottom: 40px;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: -0.5px;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-button {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button:hover {
+  color: var(--accent-primary);
+  background: rgba(236, 64, 122, 0.05);
+}
+
+.nav-button.active-tab {
+  background: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(236, 64, 122, 0.25);
+}
+
+/* Master Control App Panels */
+.application-view-panel {
+  background: var(--surface-panel);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-smooth);
+  padding: 40px;
+}
+
+.panel-header {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+/* Unified Action Input Bars */
+.interactive-action-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.primary-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-main);
+  background: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.primary-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(236, 64, 122, 0.15);
+}
+
+.primary-action-btn {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0 28px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary-action-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* Dynamic Todo Row Structures */
+.todo-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todo-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.todo-content-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.custom-checkbox-anchor {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.todo-row.resolved-state .custom-checkbox-anchor {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.todo-row.resolved-state .custom-checkbox-anchor::after {
+  content: '✓';
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.todo-text-display {
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.todo-row.resolved-state .todo-text-display {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.destructive-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.destructive-icon-btn:hover {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.08);
+}
+
+/* Dynamic Grid Notes Structures Layout Rules */
+.notes-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.note-card-node {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  transition: all 0.25s ease;
+}
+
+.note-card-node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(236, 64, 122, 0.05);
+  border-color: var(--border-subtle);
+}
+
+.note-card-body-textarea {
+  width: 100%;
+  height: 110px;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  outline: none;
+  background: transparent;
+}
+
+.note-static-render {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  white-space: pre-wrap;
+  height: 110px;
+  overflow-y: auto;
+}
+
+.note-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #f8f9fa;
+}
+
+.timestamp-lbl {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.note-controls-cluster {
+  display: flex;
+  gap: 4px;
+}
+
+.note-action-trigger {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.note-action-trigger.edit-mode-btn:hover {
+  color: var(--accent-primary);
+  background: rgba(236, 64, 122, 0.05);
+}
+
+.note-action-trigger.save-mode-btn {
+  color: #2ecc71;
+}
+
+.empty-state-placeholder {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  grid-column: 1 / -1;
+}
